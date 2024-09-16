@@ -1,2 +1,2 @@
-# JS
-First Test with JS
+# rock-paper-scissors
+First Project with JS
