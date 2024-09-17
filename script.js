@@ -2,7 +2,7 @@ function getHumanChoice() {
     let playerChoice = prompt("rock, paper, or scissors?");
     return playerChoice;
 }
-console.log(getHumanChoice());
+console.log("Your choice: " + getHumanChoice());
 
 function getComputerChoice() {
     let randomNumber = Math.random()*3;
@@ -14,5 +14,5 @@ function getComputerChoice() {
         return "scissors";
     }    
 }
-console.log(getComputerChoice());
+console.log("Computer choice: " + getComputerChoice());
 
