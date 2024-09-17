@@ -17,13 +17,7 @@ function getComputerChoice() {
     }    
 }
 
-const player = getHumanChoice()
-const computer = getComputerChoice();
-
-console.log("Your choice: " + player);
-console.log("Computer choice: " + computer);
-
-function determineWinner(player, computer) {
+function playRound(player, computer) {
     if (player === computer) {
         return "Tie!";
     } else if (
@@ -38,6 +32,16 @@ function determineWinner(player, computer) {
         return "You lose!";
     }
 }
-console.log(determineWinner(player, computer));
 
-console.log(`Score - Player: ${humanScore}, Computer: ${computerScore}`);
+function playGame() {
+    for (let i = 0; i <5; i++) {
+        const player = getHumanChoice()
+        const computer = getComputerChoice();
+        console.log("Your choice: " + player);
+        console.log("Computer choice: " + computer);
+        console.log(playRound(player, computer));
+        console.log(`Score - Player: ${humanScore}, Computer: ${computerScore}`);
+    }
+console.log("Final Score - Player: " + humanScore + ", Computer: " + computerScore);
+}
+playGame();
