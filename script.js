@@ -32,8 +32,12 @@ function determineWinner(player, computer) {
         (player === "scissors" && computer === "paper")
     ) {
         return "Player wins!";
+        humanScore++;
     } else {
         return "Computer wins!";
+        computerScore++;
     }
 }
 console.log(determineWinner(player, computer));
+
+console.log(`Score - Player: ${humanScore}, Computer: ${computerScore}`);
