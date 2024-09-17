@@ -25,17 +25,17 @@ console.log("Computer choice: " + computer);
 
 function determineWinner(player, computer) {
     if (player === computer) {
-        return "It's a tie!";
+        return "Tie!";
     } else if (
         (player === "rock" && computer === "scissors") ||
         (player === "paper" && computer === "rock") ||
         (player === "scissors" && computer === "paper")
     ) {
         humanScore++;
-        return "Player wins!";
+        return "You win!";
     } else {
         computerScore++;
-        return "Computer wins!";
+        return "You lose!";
     }
 }
 console.log(determineWinner(player, computer));
