@@ -31,11 +31,11 @@ function determineWinner(player, computer) {
         (player === "paper" && computer === "rock") ||
         (player === "scissors" && computer === "paper")
     ) {
-        return "Player wins!";
         humanScore++;
+        return "Player wins!";
     } else {
-        return "Computer wins!";
         computerScore++;
+        return "Computer wins!";
     }
 }
 console.log(determineWinner(player, computer));
