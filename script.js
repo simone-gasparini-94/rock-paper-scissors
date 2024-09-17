@@ -3,7 +3,16 @@ let computerScore = 0;
 
 function getHumanChoice() {
     let humanChoice = prompt("rock, paper, or scissors?");
-    return humanChoice.toLowerCase();
+    humanChoice = humanChoice.toLowerCase();
+    while (!isValidChoice(humanChoice)) {
+        alert("Invalid choice. Please enter rock, paper, or scissors.");
+        humanChoice = prompt("rock, paper, or scissors?").toLowerCase();
+    }
+    return humanChoice;
+}
+
+function isValidChoice(choice) {
+    return choice === "rock" || choice === "paper" || choice === "scissors";
 }
 
 function getComputerChoice() {
