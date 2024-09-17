@@ -5,7 +5,7 @@ function getComputerChoice() {
     } else if (randomNumber > 0.33333 && randomNumber < 0.66666) {
         return "paper";
     } else {
-        return "scissors"
+        return "scissors";
     }    
 }
 console.log(getComputerChoice());
