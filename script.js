@@ -17,8 +17,8 @@ function getComputerChoice() {
     }    
 }
 
-let player = getHumanChoice()
-let computer = getComputerChoice();
+const player = getHumanChoice()
+const computer = getComputerChoice();
 
 console.log("Your choice: " + player);
 console.log("Computer choice: " + computer);
