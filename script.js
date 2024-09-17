@@ -3,7 +3,7 @@ let computerScore = 0;
 
 function getHumanChoice() {
     let humanChoice = prompt("rock, paper, or scissors?");
-    return humanChoice;
+    return humanChoice.toLowerCase();
 }
 
 function getComputerChoice() {
