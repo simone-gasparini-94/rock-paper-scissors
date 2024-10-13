@@ -5,7 +5,6 @@ const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
 
-
 function getComputerChoice() {
     let randomNumber = Math.random() * 3;
     if (randomNumber < 1) {
@@ -14,34 +13,33 @@ function getComputerChoice() {
         return "paper";
     } else {
         return "scissors";
-    }    
-}
+    };
+};
 
-function playRound(player, computer) {
-    if (player === computer) {
-        return "Tie!";
+function playGame(playerChoice) {
+    const computerChoice = getComputerChoice();
+    if (playerChoice === computerChoice) {
+        console.log("It's a tie!");
     } else if (
-        (player === "rock" && computer === "scissors") ||
-        (player === "paper" && computer === "rock") ||
-        (player === "scissors" && computer === "paper")
+        (playerChoice === "rock" && computerChoice === "scissors") ||
+        (playerChoice === "paper" && computerChoice === "rock") ||
+        (playerChoice === "scissors" && computerChoice === "paper")
     ) {
-        humanScore++;
-        return "You win!";
+        console.log("You win!");
     } else {
-        computerScore++;
-        return "You lose!";
-    }
-}
+        console.log("You lose!");
+    };
+    console.log(`Player chose: ${playerChoice}, Computer chose: ${computerChoice}`);
+};
 
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        const player = getHumanChoice()
-        const computer = getComputerChoice();
-        console.log("Your choice: " + player);
-        console.log("Computer choice: " + computer);
-        console.log(playRound(player, computer));
-        console.log(`Score - Player: ${humanScore}, Computer: ${computerScore}`);
-    }
-console.log("Final Score - Player: " + humanScore + ", Computer: " + computerScore);
-}
-playGame();
+rockButton.addEventListener("click", function() {
+    playGame("rock");
+});
+
+paperButton.addEventListener("click", function() {
+    playGame("paper");
+});
+
+scissorsButton.addEventListener("click", function() {
+    playGame("scissors");
+});
