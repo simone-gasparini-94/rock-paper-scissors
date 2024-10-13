@@ -1,22 +1,13 @@
 let humanScore = 0;
 let computerScore = 0;
 
-function getHumanChoice() {
-    let humanChoice = prompt("rock, paper, or scissors?");
-    humanChoice = humanChoice.toLowerCase();
-    while (!isValidChoice(humanChoice)) {
-        alert("Invalid choice. Please enter rock, paper, or scissors.");
-        humanChoice = prompt("rock, paper, or scissors?").toLowerCase();
-    }
-    return humanChoice;
-}
+const rockButton = document.querySelector("#rock");
+const paperButton = document.querySelector("#paper");
+const scissorsButton = document.querySelector("#scissors");
 
-function isValidChoice(choice) {
-    return choice === "rock" || choice === "paper" || choice === "scissors";
-}
 
 function getComputerChoice() {
-    let randomNumber = Math.random()*3;
+    let randomNumber = Math.random() * 3;
     if (randomNumber < 1) {
         return "rock";
     } else if (randomNumber < 2) {
@@ -43,7 +34,7 @@ function playRound(player, computer) {
 }
 
 function playGame() {
-    for (let i = 0; i <5; i++) {
+    for (let i = 0; i < 5; i++) {
         const player = getHumanChoice()
         const computer = getComputerChoice();
         console.log("Your choice: " + player);
