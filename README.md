@@ -10,3 +10,5 @@ Then the code is divided in 4 functions:
 - function for assigning a random choice to the computer using Math.random method multiplied by 3
 - function for deciding the winner through and if else statement
 - function with a for loop set to 5 to play 5 rounds
+
+Updated the code so that the player can click on a button to select rock, paper or scissors instead of choosing through a prompt
