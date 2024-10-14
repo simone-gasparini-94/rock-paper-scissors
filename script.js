@@ -4,7 +4,9 @@ let computerScore = 0;
 const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
-const resultDiv = document.querySelector("#result");
+const roundDiv = document.querySelector("#round");
+const scoreDiv = document.querySelector("#score");
+const finalDiv = document.querySelector("#final");
 
 function getComputerChoice() {
     let randomNumber = Math.random() * 3;
@@ -37,7 +39,7 @@ function playGame(playerChoice) {
         result = "lose";
     };
 
-    resultDiv.textContent = `Player chose: ${playerChoice}, Computer chose: ${computerChoice}. ${resultMessage}`;
+    roundDiv.textContent = `Player chose: ${playerChoice}, Computer chose: ${computerChoice}. ${resultMessage}`;
 
     updateScore(result);
 };
@@ -48,8 +50,15 @@ function updateScore(result) {
     } else if (result === "lose") {
         computerScore++;
     };
-resultDiv.textContent += `Player: ${humanScore},  Computer: ${computerScore}`;
-}
+    
+    scoreDiv.textContent = `Player: ${humanScore},  Computer: ${computerScore}`;
+
+    if (humanScore === 5) {
+        finalDiv.textContent = "YOU WON!";
+    } else if (computerScore === 5) {
+        finalDiv.textContent = "YOU LOST!";
+    };
+};
 
 rockButton.addEventListener("click", function() {
     playGame("rock");
