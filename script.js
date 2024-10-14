@@ -4,6 +4,7 @@ let computerScore = 0;
 const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
+const resultDiv = document.querySelector("#result");
 
 function getComputerChoice() {
     let randomNumber = Math.random() * 3;
@@ -18,19 +19,37 @@ function getComputerChoice() {
 
 function playGame(playerChoice) {
     const computerChoice = getComputerChoice();
+    let resultMessage = "";
+    let result = "";
+
     if (playerChoice === computerChoice) {
-        console.log("It's a tie!");
+        resultMessage = "It's a tie!";
+        result = "tie";
     } else if (
         (playerChoice === "rock" && computerChoice === "scissors") ||
         (playerChoice === "paper" && computerChoice === "rock") ||
         (playerChoice === "scissors" && computerChoice === "paper")
     ) {
-        console.log("You win!");
+        resultMessage = "You win!";
+        result = "win";
     } else {
-        console.log("You lose!");
+        resultMessage = "You lose!";
+        result = "lose";
     };
-    console.log(`Player chose: ${playerChoice}, Computer chose: ${computerChoice}`);
+
+    resultDiv.textContent = `Player chose: ${playerChoice}, Computer chose: ${computerChoice}. ${resultMessage}`;
+
+    updateScore(result);
 };
+
+function updateScore(result) {
+    if (result === "win") {
+        humanScore++;
+    } else if (result === "lose") {
+        computerScore++;
+    };
+resultDiv.textContent += `Player: ${humanScore},  Computer: ${computerScore}`;
+}
 
 rockButton.addEventListener("click", function() {
     playGame("rock");
