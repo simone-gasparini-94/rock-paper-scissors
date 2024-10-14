@@ -4,9 +4,12 @@ let computerScore = 0;
 const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper");
 const scissorsButton = document.querySelector("#scissors");
-const roundDiv = document.querySelector("#round");
-const scoreDiv = document.querySelector("#score");
+const roundPlayerDiv = document.querySelector("#round-player");
+const roundComputerDiv = document.querySelector("#round-computer");
+const scorePlayerDiv = document.querySelector("#score-player");
+const scoreComputerDiv = document.querySelector("#score-computer");
 const finalDiv = document.querySelector("#final");
+const restartButton = document.querySelector("#restart");
 
 function getComputerChoice() {
     let randomNumber = Math.random() * 3;
@@ -21,26 +24,22 @@ function getComputerChoice() {
 
 function playGame(playerChoice) {
     const computerChoice = getComputerChoice();
-    let resultMessage = "";
     let result = "";
 
     if (playerChoice === computerChoice) {
-        resultMessage = "It's a tie!";
         result = "tie";
     } else if (
         (playerChoice === "rock" && computerChoice === "scissors") ||
         (playerChoice === "paper" && computerChoice === "rock") ||
         (playerChoice === "scissors" && computerChoice === "paper")
     ) {
-        resultMessage = "You win!";
         result = "win";
     } else {
-        resultMessage = "You lose!";
         result = "lose";
     };
 
-    roundDiv.textContent = `Player chose: ${playerChoice}, Computer chose: ${computerChoice}. ${resultMessage}`;
-
+    roundPlayerDiv.textContent = `player: ${playerChoice}`;
+    roundComputerDiv.textContent = `computer: ${computerChoice}`;
     updateScore(result);
 };
 
@@ -51,13 +50,38 @@ function updateScore(result) {
         computerScore++;
     };
     
-    scoreDiv.textContent = `Player: ${humanScore},  Computer: ${computerScore}`;
-
+    scorePlayerDiv.textContent = `player: ${humanScore}`;
+    scoreComputerDiv.textContent = `computer: ${computerScore}`;
+    
     if (humanScore === 5) {
         finalDiv.textContent = "YOU WON!";
+        disableButtons();
+        restartButton.style.display = "flex";
     } else if (computerScore === 5) {
         finalDiv.textContent = "YOU LOST!";
+        disableButtons();
+        restartButton.style.display = "flex";
     };
+};
+
+function disableButtons() {
+    rockButton.disabled = true;
+    paperButton.disabled = true;
+    scissorsButton.disabled = true;
+};
+
+function restartGame() {
+    humanScore = 0;
+    computerScore = 0;
+    roundPlayerDiv.textContent = "";
+    roundComputerDiv.textContent = "";
+    scorePlayerDiv.textContent = "";
+    scoreComputerDiv.textContent = "";
+    finalDiv.textContent = "";
+    rockButton.disabled = false;
+    paperButton.disabled = false;
+    scissorsButton.disabled = false;
+    restartButton.style.display = "none";
 };
 
 rockButton.addEventListener("click", function() {
@@ -71,3 +95,5 @@ paperButton.addEventListener("click", function() {
 scissorsButton.addEventListener("click", function() {
     playGame("scissors");
 });
+
+restartButton.addEventListener("click", restartGame);
